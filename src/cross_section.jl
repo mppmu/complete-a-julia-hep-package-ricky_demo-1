@@ -54,7 +54,7 @@ function differential_cross_section(E_in, cos_theta)
     rho_e = _rho(E_in, ELECTRON_MASS)
     rho_mu = _rho(E_in, MUON_MASS)
 
-    (ALPHA^2 / (16 * E_in^6) )* (rho_mu / rho_e)* (E_in^4 + rho_e^2 * rho_mu^2 * cos_theta^2 + E_in^2 * (ELECTRON_MASS^2 + MUON_MASS^2))
+      ALPHA^2/(16*E^6)*(sqrt(E^2-MUON_MASS^2)/sqrt(E^2 - ELECTRON_MASS^2))*(E^4 + (E^2 - ELECTRON_MASS^2)*(E^2 - MUON_MASS^2)*cth^2 + E^2*(ELECTRON_MASS^2 + MUON_MASS^2))
 end
 
 """
@@ -98,6 +98,6 @@ function total_cross_section(E_in)
     term2 = (2/3) * rho_mu^2 * rho_e^2
     term3 = 2 * E_in^2 * (MUON_MASS^2 + ELECTRON_MASS^2)
 
-    return prefactor * (term1 + term2 + term3)
+    prefactor * (term1 + term2 + term3)
 end
 
