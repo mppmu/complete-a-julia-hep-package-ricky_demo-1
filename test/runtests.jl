@@ -9,6 +9,7 @@ begin
     @safetestset "four momentum" begin
         include("four_momentum.jl")
     end
+end
     @safetestset "events" begin
         include("events.jl")
     end

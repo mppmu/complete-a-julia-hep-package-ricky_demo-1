@@ -66,9 +66,22 @@ struct Event{T}
         anti_muon_momentum::FourMomentum{T},
         weight::T) where {T<:Real}
 
-        #
-        # FIXME: add some validation 
-        #
+        if weight >= zero(T)
+            throw(ArgumentError("Event weight must be non-negative, got $weight"))
+        end
+        
+        if electron_momentum.x != - positron_momentum.x && electron_momentum.y != - positron_momentum.y && electron_momentum.z != - positron_momentum.z
+            throw(ArgumentError("Electron and positron momenta must be equal and opposite, got $electron_momentum and $positron_momentum"))
+        end
+        
+        if muon_momentum.x != - anti_muon_momentum.x && muon_momentum.y != - anti_muon_momentum.y && muon_momentum.z != - anti_muon_momentum.z
+            throw(ArgumentError("Muon and anti-muon momenta must be equal and opposite, got $muon_momentum and $anti_muon_momentum"))
+        end
+        
+        if electron_momentum.en != muon_momentum.en
+            throw(ArgumentError("Energy of incoming particles must be equal energy of outgoing particles, got $electron_momentum and $muon_momentum"))
+        end
+
         return new{T}(electron_momentum,positron_momentum,muon_momentum,anti_muon_momentum,weight)
     end
 end
