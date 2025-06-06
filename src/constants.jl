@@ -12,7 +12,10 @@ This value is taken from the PDG 2020 recommended values of the fundamental phys
 - The Review of Particle Physics: P.A. Zyla et al. (Particle Data Group), Prog. Theor. Exp. Phys. 2020, 083C01 (2020)
 
 """
-ELECTRON_MASS
+ELECTRON_MASS = 0.51099895000
+
+"""
+   PROTON_MASS
 
 """
    MUON_MASS 
