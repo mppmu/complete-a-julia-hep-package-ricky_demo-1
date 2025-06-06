@@ -90,10 +90,14 @@ julia> total_cross_section(E_in)
 ```
 """
 function total_cross_section(E_in)
-    #
-    # FIXME: fill me in
-    #
+    rho_e = _rho(E_in, ELECTRON_MASS)
+    rho_mu = _rho(E_in, MUON_MASS)
+
+    prefactor = π * ALPHA^2 / (8 * E_in^6) * (rho_mu / rho_e)
+    term1 = 2 * E_in^4
+    term2 = (2/3) * rho_mu^2 * rho_e^2
+    term3 = 2 * E_in^2 * (MUON_MASS^2 + ELECTRON_MASS^2)
+
+    return prefactor * (term1 + term2 + term3)
 end
-
-
 
