@@ -2,7 +2,7 @@
 @inline function _rho(E,m) 
     #
     # FIXME: implement this!
-    #
+    sqrt(E^2 - m^2)
 end
 
 """
